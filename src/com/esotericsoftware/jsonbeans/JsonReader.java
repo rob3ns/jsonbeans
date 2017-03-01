@@ -35,7 +35,10 @@ import com.esotericsoftware.jsonbeans.JsonValue.ValueType;
  * methods to perform event driven parsing. When this is done, the parse methods will return null.
  * @author Nathan Sweet */
 public class JsonReader {
+	private String original;
+	
 	public JsonValue parse (String json) {
+		original = json;
 		char[] data = json.toCharArray();
 		return parse(data, 0, data.length);
 	}
@@ -544,6 +547,7 @@ public class JsonReader {
 		}
 
 		JsonValue root = this.root;
+		root.setOriginalString(original);
 		this.root = null;
 		current = null;
 		lastChild.clear();
