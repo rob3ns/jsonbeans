@@ -20,6 +20,7 @@ public class JsonValue implements Iterable<JsonValue> {
 	private ValueType type;
 
 	private String stringValue;
+	private String originalString;
 	private double doubleValue;
 	private long longValue;
 
@@ -880,6 +881,14 @@ public class JsonValue implements Iterable<JsonValue> {
 			return (name == null ? "" : name + ": ") + prettyPrint(OutputType.minimal, 0);
 	}
 
+	public String getOriginalString () {
+		return originalString;
+	}
+	
+	public void setOriginalString (String s) {
+		originalString = s;
+	}
+	
 	public String prettyPrint (OutputType outputType, int singleLineColumns) {
 		PrettyPrintSettings settings = new PrettyPrintSettings();
 		settings.outputType = outputType;
